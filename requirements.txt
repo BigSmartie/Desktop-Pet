@@ -1,5 +1,6 @@
 python-dotenv
 requests
+torch
 langchain
 langchain-core
 langchain-community
