@@ -1,0 +1,75 @@
+{
+  "name": "frontend",
+  "private": true,
+  "version": "0.0.0",
+  "description": "A local AI desktop pet with RAG memory, MCP tools, action approval, and companion reports.",
+  "author": "Feng Hao",
+  "type": "module",
+  "main": "electron/main.cjs",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "desktop": "npm run build && electron electron/main.cjs",
+    "desktop:dev": "electron electron/main.cjs --dev",
+    "desktop:dir": "vite build && electron-builder --dir",
+    "desktop:build": "vite build && electron-builder"
+  },
+  "dependencies": {
+    "axios": "^1.14.0",
+    "dompurify": "^3.3.3",
+    "marked": "^17.0.5",
+    "vue": "^3.5.30"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.5",
+    "electron": "^39.2.6",
+    "electron-builder": "^26.0.12",
+    "vite": "^8.0.1"
+  },
+  "build": {
+    "appId": "com.myagent.pet",
+    "productName": "MyAgent Pet",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**",
+      "build/**",
+      "electron/**",
+      "public/**",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "../",
+        "to": "backend",
+        "filter": [
+          "agent/**",
+          "action_queue/**",
+          "api_models.py",
+          "config/**",
+          "core/**",
+          "knowledge/**",
+          "main.py",
+          "mcp_bridge/**",
+          "memory/**",
+          "pet/**",
+          "requirements.txt",
+          "tools/**"
+        ]
+      }
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "build/icon.ico",
+      "artifactName": "MyAgent-Pet-${version}-Setup.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
+}

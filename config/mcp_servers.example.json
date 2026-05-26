@@ -1,0 +1,130 @@
+{
+  "servers": [
+    {
+      "name": "local_project",
+      "enabled": true,
+      "transport": "stdio",
+      "command": "python",
+      "args": ["-m", "mcp_bridge.servers.local_project"],
+      "cwd": ".",
+      "tools": [
+        {
+          "name": "list_project_files",
+          "description": "List files inside the current project workspace.",
+          "enabled": true
+        },
+        {
+          "name": "read_project_file",
+          "description": "Read a text file inside the current project workspace.",
+          "enabled": true
+        },
+        {
+          "name": "create_project_directory",
+          "description": "Create a directory inside the project workspace.",
+          "enabled": true,
+          "requires_approval": true,
+          "risk": "medium"
+        },
+        {
+          "name": "create_project_file",
+          "description": "Create a text file inside the project workspace, optionally overwriting it.",
+          "enabled": true,
+          "requires_approval": true,
+          "risk": "high"
+        },
+        {
+          "name": "append_project_file",
+          "description": "Append text to a project file, optionally creating it first.",
+          "enabled": true,
+          "requires_approval": true,
+          "risk": "medium"
+        },
+        {
+          "name": "replace_project_file_text",
+          "description": "Replace exact text inside a project text file.",
+          "enabled": true,
+          "requires_approval": true,
+          "risk": "high"
+        },
+        {
+          "name": "record_agent_note",
+          "description": "Create a timestamped markdown note under data/agent_notes.",
+          "enabled": true,
+          "requires_approval": true,
+          "risk": "low"
+        },
+        {
+          "name": "create_skill_draft",
+          "description": "Create a markdown draft for a reusable MyAgent skill.",
+          "enabled": true,
+          "requires_approval": true,
+          "risk": "medium"
+        },
+        {
+          "name": "get_project_overview",
+          "description": "Return a compact overview of project folders, key files, and file counts.",
+          "enabled": true
+        },
+        {
+          "name": "search_project_text",
+          "description": "Search text files in the project workspace and return matching lines.",
+          "enabled": true
+        },
+        {
+          "name": "list_knowledge_documents",
+          "description": "List documents registered in the local RAG knowledge base.",
+          "enabled": true
+        },
+        {
+          "name": "list_agent_tasks",
+          "description": "List persisted assistant tasks, optionally filtered by status.",
+          "enabled": true
+        },
+        {
+          "name": "add_agent_task",
+          "description": "Add a task to the assistant task list.",
+          "enabled": true,
+          "requires_approval": true,
+          "risk": "medium"
+        },
+        {
+          "name": "update_agent_task_status",
+          "description": "Update an assistant task status to todo, in_progress, or done.",
+          "enabled": true,
+          "requires_approval": true,
+          "risk": "medium"
+        },
+        {
+          "name": "get_user_profile_summary",
+          "description": "Return the persisted user profile used by the assistant.",
+          "enabled": true
+        },
+        {
+          "name": "get_pet_snapshot",
+          "description": "Return the current persisted desktop pet state.",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "name": "filesystem",
+      "enabled": false,
+      "transport": "stdio",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "."],
+      "cwd": ".",
+      "tools": [
+        {
+          "name": "read_file",
+          "description": "Read local project files through the official MCP filesystem server.",
+          "enabled": false
+        },
+        {
+          "name": "write_file",
+          "description": "Write local project files through the official MCP filesystem server.",
+          "enabled": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,192 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+:root {
+  --accent: #0f766e;
+  --accent-strong: #0f766e;
+  --accent-soft: #16a394;
+  --accent-warm: #f17a3e;
+  --accent-glow: rgba(15, 118, 110, 0.22);
+  --accent-glow-sm: rgba(15, 118, 110, 0.1);
+
+  --text-primary: #18232b;
+  --text-secondary: #52616a;
+  --text-muted: #7f8c92;
+  --text-inverse: #ffffff;
+
+  --user-bubble-bg: #0f766e;
+  --bot-bubble-bg: rgba(255, 255, 255, 0.72);
+  --bot-bubble-border: rgba(220, 230, 228, 0.9);
+
+  --glass-light: rgba(249, 252, 251, 0.78);
+  --glass-mid: rgba(255, 255, 255, 0.54);
+  --glass-border: rgba(214, 226, 224, 0.84);
+  --glass-shadow: 0 12px 28px rgba(25, 44, 48, 0.07), 0 1px 3px rgba(0, 0, 0, 0.04);
+  --glass-inner: inset 0 1px 0 rgba(255, 255, 255, 0.82);
+
+  --sidebar-width: 300px;
+  --radius-xl: 10px;
+  --radius-lg: 8px;
+  --radius-md: 8px;
+  --radius-sm: 8px;
+  --radius-pill: 999px;
+
+  --transition-fast: 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-primary);
+  background: #eef3f2 url('/bg.png') center center / cover no-repeat fixed;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: rgba(239, 246, 244, 0.82);
+  pointer-events: none;
+  z-index: 0;
+}
+
+#app {
+  position: relative;
+  z-index: 1;
+  height: 100vh;
+  width: 100vw;
+  padding: 14px;
+}
+
+body[data-window="pet"] {
+  background: transparent;
+}
+
+body[data-window="pet"]::before {
+  display: none;
+}
+
+body[data-window="pet"] #app {
+  padding: 0;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(15, 118, 110, 0.24);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(15, 118, 110, 0.42);
+}
+
+.glass {
+  background: var(--glass-light);
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow), var(--glass-inner);
+  border-radius: var(--radius-xl);
+}
+
+.label-xs {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 16px;
+  background: var(--accent);
+  color: white;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  border: none;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+  box-shadow: 0 4px 16px var(--accent-glow);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--accent-soft);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px var(--accent-glow);
+}
+
+.btn-primary:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 13px;
+  background: rgba(255, 255, 255, 0.34);
+  color: var(--text-secondary);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  border: 1px solid rgba(33, 55, 61, 0.08);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--text-primary);
+}
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-dot {
+  0%,
+  80%,
+  100% {
+    transform: scale(0.55);
+    opacity: 0.4;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

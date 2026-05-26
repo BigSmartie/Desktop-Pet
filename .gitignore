@@ -1,0 +1,53 @@
+# Environment variables and local configuration
+.env
+.env.*
+!.env.example
+!.env.template
+/config/mcp_servers.json
+
+# Python environments and caches
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Local runtime data, memory, vector stores, and uploads
+/data/
+/local_qdrant/
+/logs/
+/temp/
+*.log
+/error.log
+/error.txt
+
+# Frontend dependencies and generated desktop artifacts
+/frontend/node_modules/
+/frontend/dist/
+/frontend/dist-ssr/
+/frontend/release/
+/frontend/.vite/
+/frontend/*.local
+
+# Editors and operating system files
+/.idea/
+/.vscode/
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Build and package leftovers
+*.tmp
+*.bak
+*.zip
